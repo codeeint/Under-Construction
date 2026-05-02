@@ -1,0 +1,233 @@
+:root {
+    --bg-light: #fcfcfb;
+    --beige-light: #dbd7c7;
+    --beige-dark: #b3aa9e;
+    --orange: #faa114;
+    --text-muted: #786e67;
+    --text-dark: #262a2b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-font-smoothing: antialiased;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 800px;
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+}
+
+/* Header & Logo */
+.header {
+    margin-bottom: 6rem;
+    margin-top: auto;
+}
+
+.logo {
+    height: 70px; /* Base height */
+    width: auto;
+    transform: scale(3); /* Kept the scale to fix the whitespace issue */
+    transform-origin: center;
+}
+
+/* Main Content */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    animation: fadeIn 1s ease-out;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 2rem;
+}
+
+.pulse-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--orange);
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(250, 161, 20, 0.4);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(250, 161, 20, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(250, 161, 20, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(250, 161, 20, 0); }
+}
+
+.title {
+    font-family: 'Lora', serif;
+    font-size: 3.5rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+}
+
+.subtitle {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin-bottom: 4rem;
+    font-weight: 300;
+}
+
+/* Progress */
+.progress-wrapper {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 4rem;
+}
+
+.progress-line {
+    height: 1px;
+    background-color: var(--beige-light);
+    width: 100%;
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.progress-active {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    height: 3px;
+    width: 85%;
+    background-color: var(--orange);
+}
+
+.progress-text {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Button */
+.contact-btn {
+    display: inline-block;
+    padding: 1rem 3rem;
+    background-color: transparent;
+    color: var(--text-dark);
+    border: 1px solid var(--beige-dark);
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+    background-color: var(--text-dark);
+    color: var(--bg-light);
+    border-color: var(--text-dark);
+}
+
+/* Footer */
+.footer {
+    margin-top: auto;
+    padding-top: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--orange);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .title { font-size: 2.5rem; }
+    .header { margin-bottom: 4rem; }
+}
+
+/* Legal Pages Overrides (since they share this CSS) */
+.legal-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    text-align: left;
+}
+
+.legal-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.legal-title {
+    font-family: 'Lora', serif;
+    font-size: 3rem;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+.prose {
+    color: var(--text-muted);
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+.prose h3 {
+    color: var(--text-dark);
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.4rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.prose p {
+    margin-bottom: 1.5rem;
+}
