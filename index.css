@@ -22,6 +22,7 @@ body {
     justify-content: center;
     align-items: center;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden; /* Prevent horizontal scroll on mobile */
 }
 
 .wrapper {
@@ -37,15 +38,19 @@ body {
 
 /* Header & Logo */
 .header {
-    margin-bottom: 6rem;
+    margin-bottom: 7rem; /* Increased to account for logo scale */
     margin-top: auto;
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 .logo {
     height: 70px; /* Base height */
     width: auto;
-    transform: scale(3); /* Kept the scale to fix the whitespace issue */
+    transform: scale(3); /* Bypasses whitespace in image */
     transform-origin: center;
+    max-width: 100%;
 }
 
 /* Main Content */
@@ -166,6 +171,7 @@ body {
     gap: 1rem;
     font-size: 0.9rem;
     color: var(--text-muted);
+    width: 100%;
 }
 
 .footer-links {
@@ -188,22 +194,23 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-@media (max-width: 768px) {
-    .title { font-size: 2.5rem; }
-    .header { margin-bottom: 4rem; }
-}
-
-/* Legal Pages Overrides (since they share this CSS) */
+/* Legal Pages Overrides */
 .legal-wrapper {
     max-width: 900px;
     margin: 0 auto;
     padding: 4rem 2rem;
     text-align: left;
+    width: 100%;
 }
 
 .legal-header {
     text-align: center;
     margin-bottom: 4rem;
+}
+
+.legal-header a {
+    display: inline-block;
+    margin-bottom: 5rem;
 }
 
 .legal-title {
@@ -230,4 +237,101 @@ body {
 
 .prose p {
     margin-bottom: 1.5rem;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN SYSTEM
+   ========================================= */
+
+/* Tablets (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .title { font-size: 3rem; }
+    .wrapper, .legal-wrapper { padding: 3rem 2rem; }
+}
+
+/* Mobile Devices (max-width: 768px) */
+@media (max-width: 768px) {
+    .header { 
+        margin-bottom: 4.5rem; 
+    }
+    
+    .logo { 
+        transform: scale(2.2); /* Prevent overflow on small screens */
+    }
+    
+    .legal-header a {
+        margin-bottom: 3.5rem;
+    }
+
+    .title { 
+        font-size: 2.25rem; 
+        margin-bottom: 1rem;
+    }
+    
+    .subtitle { 
+        font-size: 1.05rem; 
+        margin-bottom: 3rem;
+        padding: 0 1rem;
+    }
+    
+    .progress-wrapper {
+        margin-bottom: 3rem;
+    }
+    
+    .contact-btn {
+        width: 100%; /* Easier touch targets on mobile */
+        max-width: 300px;
+        text-align: center;
+        padding: 1rem 2rem;
+    }
+    
+    .footer {
+        padding-top: 4rem;
+        gap: 1.5rem;
+        text-align: center;
+    }
+    
+    .footer-links {
+        flex-direction: column; /* Stack footer links vertically */
+        gap: 1rem;
+    }
+
+    /* Legal Pages Mobile Tweak */
+    .legal-title { font-size: 2.25rem; }
+    .legal-header { margin-bottom: 2.5rem; }
+    .prose h3 { font-size: 1.25rem; margin-top: 2rem; }
+    .prose p { font-size: 1rem; }
+}
+
+/* Small Mobile / Narrow Screens (max-width: 480px) */
+@media (max-width: 480px) {
+    .wrapper, .legal-wrapper { 
+        padding: 2rem 1.5rem; 
+    }
+    
+    .header {
+        margin-bottom: 3.5rem;
+    }
+
+    .logo { 
+        transform: scale(1.8); 
+    }
+
+    .title { 
+        font-size: 1.8rem; 
+    }
+
+    .subtitle {
+        font-size: 0.95rem;
+        padding: 0;
+    }
+
+    .badge { 
+        font-size: 0.75rem; 
+        margin-bottom: 1.5rem;
+    }
+    
+    .progress-text {
+        font-size: 0.75rem;
+    }
 }
